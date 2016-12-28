@@ -12,6 +12,13 @@ namespace MovieRental
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapMvcAttributeRoutes();
+            //routes.MapRoute(
+            //    name: "MoviesbyDate",
+            //    url: "Movie/Released/{ReleaseYear}/{ReleaseMonth}",
+            //    defaults: new { controller = "Movie", action = "MoviesbyReleaseDate" },
+            //    constraints: new { ReleaseYear = @"\d{4}", ReleaseMonth= @"\d{2}" }
+            //    );
 
             routes.MapRoute(
                 name: "Default",

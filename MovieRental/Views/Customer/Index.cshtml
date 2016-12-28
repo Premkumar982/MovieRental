@@ -1,0 +1,18 @@
+﻿@model MovieRental.ViewModel.CustomerViewModel
+@{
+    ViewBag.Title = "Customer List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="table table-bordered table-striped">
+        @foreach (var cust in Model.CustomerList)
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.ActionLink(cust.CustomerName, "Details", "Customer")
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
