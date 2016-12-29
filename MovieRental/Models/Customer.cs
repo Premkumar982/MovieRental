@@ -13,6 +13,8 @@ namespace MovieRental.Models
         [StringLength(255)]
         public string CustomerName { get; set; }
 
+        public DateTime? DateOfBirth { get; set; } 
+
         public bool IsSubscribedtoNewsLetter { get; set; }
 
         // Navigation Property
