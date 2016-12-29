@@ -17,7 +17,7 @@ namespace MovieRental.Controllers
             var Customers = new List<Customer>
             {
                 new Customer { CustomerName="Premkumar"},
-                new Customer { CustomerName="Jane"}
+                new Customer { CustomerName="Jane Doe"}
             };
 
             var viewModel = new RandomMovieViewModels
