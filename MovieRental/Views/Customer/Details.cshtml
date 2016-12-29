@@ -1,8 +1,18 @@
-﻿
+﻿@model MovieRental.ViewModel.CustomerViewModel
 @{
     ViewBag.Title = "Customer Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+@if (Model.CustomerList.Count > 0)
+{
+    foreach (var customerdetails in Model.CustomerList)
+    {
+        <h2>Customer Details : @customerdetails.CustomerName</h2>
+    }
+}
+else
+{
+    <h2>Customer Details doesnt exist</h2>
+}
 

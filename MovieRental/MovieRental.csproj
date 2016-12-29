@@ -214,10 +214,32 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612291448209_InitialModel.cs" />
+    <Compile Include="Migrations\201612291448209_InitialModel.Designer.cs">
+      <DependentUpon>201612291448209_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612291533135_addIsSubscribedtoNewsLetter.cs" />
+    <Compile Include="Migrations\201612291533135_addIsSubscribedtoNewsLetter.Designer.cs">
+      <DependentUpon>201612291533135_addIsSubscribedtoNewsLetter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612291537429_AddMembershipType.cs" />
+    <Compile Include="Migrations\201612291537429_AddMembershipType.Designer.cs">
+      <DependentUpon>201612291537429_AddMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612291539494_PopulateMembershipType.cs" />
+    <Compile Include="Migrations\201612291539494_PopulateMembershipType.Designer.cs">
+      <DependentUpon>201612291539494_PopulateMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612291548272_AppliedAnnotationsCustomerName.cs" />
+    <Compile Include="Migrations\201612291548272_AppliedAnnotationsCustomerName.Designer.cs">
+      <DependentUpon>201612291548272_AppliedAnnotationsCustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -234,9 +256,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -298,6 +317,23 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612291448209_InitialModel.resx">
+      <DependentUpon>201612291448209_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612291533135_addIsSubscribedtoNewsLetter.resx">
+      <DependentUpon>201612291533135_addIsSubscribedtoNewsLetter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612291537429_AddMembershipType.resx">
+      <DependentUpon>201612291537429_AddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612291539494_PopulateMembershipType.resx">
+      <DependentUpon>201612291539494_PopulateMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612291548272_AppliedAnnotationsCustomerName.resx">
+      <DependentUpon>201612291548272_AppliedAnnotationsCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

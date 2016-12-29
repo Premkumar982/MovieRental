@@ -9,5 +9,6 @@ namespace MovieRental.ViewModel
     public class CustomerViewModel
     {
         public List<Customer> CustomerList { get; set; }
+
     }
 }
