@@ -26,32 +26,57 @@ namespace MovieRental.Controllers
         public ActionResult New()
         {
             var MembershipTypes = _context.MembershipTypes.ToList();
-            var NewCustomerVM = new NewCustomerViewModel()
+            var NewCustomerVM = new CustomerViewModel()
             {
                 MembershipTypes = MembershipTypes
             };
-            return View(NewCustomerVM);
+            return View("CustomerForm",NewCustomerVM);
         }
         [HttpPost]
-        public ActionResult CreateCustomer(NewCustomerViewModel NewCustomerDetails)
+        public ActionResult SaveCustomer(CustomerViewModel NewCustomerDetails)
         {
-            Customer CustDetails = new Customer()
+            if (NewCustomerDetails.Customer.Id == 0)
             {
-                CustomerName = NewCustomerDetails.Customer.CustomerName,
-                DateOfBirth = NewCustomerDetails.Customer.DateOfBirth,
-                IsSubscribedtoNewsLetter = NewCustomerDetails.Customer.IsSubscribedtoNewsLetter,
-                MembershipTypeId = NewCustomerDetails.Customer.MembershipTypeId
-            };
-            _context.Customers.Add(CustDetails);
+                Customer CustDetails = new Customer()
+                {
+                    CustomerName = NewCustomerDetails.Customer.CustomerName,
+                    DateOfBirth = NewCustomerDetails.Customer.DateOfBirth,
+                    IsSubscribedtoNewsLetter = NewCustomerDetails.Customer.IsSubscribedtoNewsLetter,
+                    MembershipTypeId = NewCustomerDetails.Customer.MembershipTypeId
+                };
+                _context.Customers.Add(CustDetails);
+                
+            }
+            else
+            {
+                Customer CustomerinDB = _context.Customers.Single(c => c.Id == NewCustomerDetails.Customer.Id);
+                if(CustomerinDB == null)
+                {
+                    return HttpNotFound();
+                }
+
+                CustomerinDB.CustomerName = NewCustomerDetails.Customer.CustomerName;
+                CustomerinDB.DateOfBirth = NewCustomerDetails.Customer.DateOfBirth;
+                CustomerinDB.IsSubscribedtoNewsLetter = NewCustomerDetails.Customer.IsSubscribedtoNewsLetter;
+                CustomerinDB.MembershipTypeId = NewCustomerDetails.Customer.MembershipTypeId;
+                
+                //_context.Customers.Add(CustomerinDB);
+            }
+
             _context.SaveChanges();
             return RedirectToAction("Index", "Customer");
-            
+
         }
 
         public ActionResult Edit(int CustId)
         {
-            var Customer = _context.Customers.Include(m=>m.CustomerMembershipType).Where(c => c.Id == CustId).ToList();
-            return View(Customer);
+            var Cust = _context.Customers.SingleOrDefault(c => c.Id == CustId);
+            var CustomerDetails = new CustomerViewModel()
+            {
+                Customer = Cust,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+            return View("CustomerForm",CustomerDetails);
         }
         public ActionResult Index()
         {

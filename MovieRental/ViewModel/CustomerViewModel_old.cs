@@ -6,10 +6,9 @@ using MovieRental.Models;
 
 namespace MovieRental.ViewModel
 {
-    public class NewCustomerViewModel
+    public class CustomerViewModel_old
     {
-        public List<MembershipType> MembershipTypes { get; set; }
+        public List<Customer> CustomerList { get; set; }
 
-        public Customer Customer { get; set; }
     }
 }

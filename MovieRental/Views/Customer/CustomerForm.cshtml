@@ -1,4 +1,4 @@
-﻿@model MovieRental.ViewModel.NewCustomerViewModel
+﻿@model MovieRental.ViewModel.CustomerViewModel
 @{
     ViewBag.Title = "New Customer";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,7 +6,7 @@
 
 <h2>New</h2>
 
-@using (Html.BeginForm("CreateCustomer", "Customer"))
+@using (Html.BeginForm("SaveCustomer", "Customer"))
 {
     <div class="form-group">
         @Html.LabelFor(c => c.Customer.CustomerName)
@@ -15,11 +15,7 @@
 
     <div class="form-group">
         @Html.LabelFor(c => c.Customer.DateOfBirth)
-        @Html.TextBoxFor(c => c.Customer.DateOfBirth, new { @class = "form-control" })
-    </div>
-
-    <div class="form-group checkbox">
-        @Html.CheckBoxFor(c => c.Customer.IsSubscribedtoNewsLetter) Subscribe to News Letter ?
+        @Html.TextBoxFor(c => c.Customer.DateOfBirth, "{0:dd/MM/yyyy}", new { @class = "form-control" })
     </div>
 
     <div class="form-group">
@@ -28,6 +24,10 @@
         @Html.DropDownListFor(c => c.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
     </div>
 
+    <div class="form-group checkbox">
+        @Html.CheckBoxFor(c => c.Customer.IsSubscribedtoNewsLetter) Subscribe to News Letter ?
+    </div>
+    @Html.HiddenFor(c=>c.Customer.Id)
     <button type="submit" class="btn btn-primary">Save</button>
 
 }
