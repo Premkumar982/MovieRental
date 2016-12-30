@@ -1,18 +1,26 @@
-﻿@model MovieRental.ViewModel.CustomerViewModel
+﻿@model IEnumerable<MovieRental.Models.Customer>
 @{
     ViewBag.Title = "Customer Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (Model.CustomerList.Count > 0)
-{
-    foreach (var customerdetails in Model.CustomerList)
+@*if (Model. > 0)
+    {*@
+    @foreach (var customerdetails in Model)
     {
-        <h2>Customer Details : @customerdetails.CustomerName</h2>
+        <h2>Customer Details</h2>
+        <ul>
+            NAME: @customerdetails.CustomerName
+            <li>Membership Type : @customerdetails.CustomerMembershipType.Name</li>
+            @if (customerdetails.DateOfBirth != null)
+            {
+                <li>Date of Birth: @customerdetails.DateOfBirth</li>
+            }
+        </ul>
     }
-}
+@*}
 else
 {
     <h2>Customer Details doesnt exist</h2>
-}
+}*@
 

@@ -246,6 +246,14 @@
     <Compile Include="Migrations\201612291756266_AddCustomerDOB.Designer.cs">
       <DependentUpon>201612291756266_AddCustomerDOB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612300011310_AddMovieGenreandProp.cs" />
+    <Compile Include="Migrations\201612300011310_AddMovieGenreandProp.Designer.cs">
+      <DependentUpon>201612300011310_AddMovieGenreandProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612300013059_PopulateMovieGenre.cs" />
+    <Compile Include="Migrations\201612300013059_PopulateMovieGenre.Designer.cs">
+      <DependentUpon>201612300013059_PopulateMovieGenre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -253,6 +261,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\MovieGenre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
@@ -356,6 +365,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612291756266_AddCustomerDOB.resx">
       <DependentUpon>201612291756266_AddCustomerDOB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612300011310_AddMovieGenreandProp.resx">
+      <DependentUpon>201612300011310_AddMovieGenreandProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612300013059_PopulateMovieGenre.resx">
+      <DependentUpon>201612300013059_PopulateMovieGenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

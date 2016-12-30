@@ -38,12 +38,13 @@ namespace MovieRental.Controllers
         public ActionResult Details(int CustId)
         {
             //var CustomerDetails = CustomerList.Where(c => c.Id == CustId).ToList();
-            var CustomerDetails = _context.Customers.Where(c => c.Id == CustId).ToList();
-            var CustomerVM = new CustomerViewModel()
-            {
-                CustomerList = CustomerDetails
-            };
-            return View(CustomerVM);
+            var CustomerDetails = _context.Customers.Include(m=>m.CustomerMembershipType)
+                                                    .Where(c => c.Id == CustId).ToList();
+            //var CustomerVM = new CustomerViewModel()
+            //{
+            //    CustomerList = CustomerDetails
+            //};
+            return View(CustomerDetails);
         }
 
         //public List<Customer> GetCustomerList()
