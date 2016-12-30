@@ -12,6 +12,8 @@ namespace MovieRental.Models
         public string MovieName { get; set; }
 
         public MovieGenre MovieType { get; set; }
+
+        public int MovieTypeId { get; set; }
         public DateTime ReleaseDate { get; set; }
 
         public DateTime DateAdded { get; set; }

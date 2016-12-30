@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 using MovieRental.Models;
 using MovieRental.ViewModel;
 
@@ -10,10 +11,21 @@ namespace MovieRental.Controllers
 {
     public class MovieController : Controller
     {
+        ApplicationDbContext _Context;
+
+        public MovieController()
+        {
+            _Context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _Context.Dispose();
+        }
         // GET: Movie
         public ActionResult Random()
         {
-            var Movie = new Movie(){ MovieName="Frozen"};
+            var Movie = _Context.Movies.ToList();
             var Customers = new List<Customer>
             {
                 new Customer { CustomerName="Premkumar"},
@@ -22,8 +34,8 @@ namespace MovieRental.Controllers
 
             var viewModel = new RandomMovieViewModels
             {
-                Movie = Movie,
-                Customers = Customers
+                Movie = Movie
+                //Customers = Customers
             };
             return View(viewModel);
         }
@@ -33,9 +45,10 @@ namespace MovieRental.Controllers
             return Content("Id=" + id);
         }
 
-        public ActionResult Index(int? PageIndex, string sortBy)
+        //public ActionResult Index(int? PageIndex, string sortBy)
+        public ActionResult Index()
         {
-            if (!PageIndex.HasValue)
+            /*if (!PageIndex.HasValue)
             {
                 PageIndex = 1;
             }
@@ -43,9 +56,29 @@ namespace MovieRental.Controllers
             {
                 sortBy = "MovieName";
             }
-            return Content(string.Format("pageIndex= {0}, Sortby = {1}", PageIndex, sortBy));
+            return Content(string.Format("pageIndex= {0}, Sortby = {1}", PageIndex, sortBy));*/
+            var Movie = _Context.Movies.Include(m=>m.MovieType).ToList();
+            var MovieVM = new RandomMovieViewModels
+            {
+                Movie = Movie
+            };
+            return View(MovieVM);
         }
-        
+        [Route("Movie/Details/{MovieId}")]
+        public ActionResult Details(int MovieId)
+        {
+            var Movie = _Context.Movies.Include(t => t.MovieType).Where(m => m.Id == MovieId);
+            if(Movie == null)
+            {
+                return HttpNotFound();
+            }
+            var MovieVM = new RandomMovieViewModels
+            {
+                Movie = Movie.ToList()
+            };
+            return View(MovieVM);
+        }
+
         [Route("Movie/Released/{ReleaseYear}/{ReleaseMonth:regex(\\d{2}):range(1,12)}")]
         public ActionResult MoviesbyReleaseDate(int ReleaseYear, int ReleaseMonth)
         {

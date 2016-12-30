@@ -23,6 +23,36 @@ namespace MovieRental.Controllers
         {
             _context.Dispose();
         }
+        public ActionResult New()
+        {
+            var MembershipTypes = _context.MembershipTypes.ToList();
+            var NewCustomerVM = new NewCustomerViewModel()
+            {
+                MembershipTypes = MembershipTypes
+            };
+            return View(NewCustomerVM);
+        }
+        [HttpPost]
+        public ActionResult CreateCustomer(NewCustomerViewModel NewCustomerDetails)
+        {
+            Customer CustDetails = new Customer()
+            {
+                CustomerName = NewCustomerDetails.Customer.CustomerName,
+                DateOfBirth = NewCustomerDetails.Customer.DateOfBirth,
+                IsSubscribedtoNewsLetter = NewCustomerDetails.Customer.IsSubscribedtoNewsLetter,
+                MembershipTypeId = NewCustomerDetails.Customer.MembershipTypeId
+            };
+            _context.Customers.Add(CustDetails);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customer");
+            
+        }
+
+        public ActionResult Edit(int CustId)
+        {
+            var Customer = _context.Customers.Include(m=>m.CustomerMembershipType).Where(c => c.Id == CustId).ToList();
+            return View(Customer);
+        }
         public ActionResult Index()
         {
             /*var CustomerViewModel = new CustomerViewModel()

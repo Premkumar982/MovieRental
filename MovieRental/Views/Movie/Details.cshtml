@@ -1,0 +1,25 @@
+﻿@model MovieRental.ViewModel.RandomMovieViewModels
+@{
+    ViewBag.Title = "Customer Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*if (Model. > 0)
+    {*@
+@foreach (var MovieDetails in Model.Movie)
+{
+    <h2>Customer Details</h2>
+        <ul>
+            
+            <li>Genre: @MovieDetails.MovieType.Genre</li>
+            <li>Release Date: @MovieDetails.ReleaseDate</li>
+            <li>Date Added: @MovieDetails.DateAdded</li>
+            <li>Number in Stock: @MovieDetails.NumberInStock</li>
+        </ul>
+}
+@*}
+    else
+    {
+        <h2>Customer Details doesnt exist</h2>
+    }*@
+

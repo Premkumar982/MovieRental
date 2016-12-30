@@ -1,0 +1,29 @@
+﻿@model MovieRental.ViewModel.RandomMovieViewModels
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Movies</h2>
+<table class="container-fluid table table-bordered table-striped" >
+    <thead>
+        <tr>
+            <th class="col-md-6">
+                Movie Name
+            </th>
+            <th class="col-md-6">
+                Genre
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var MovieDetails in Model.Movie)
+        {
+            <tr>
+                <td>@Html.ActionLink(MovieDetails.MovieName, "Details", "Movie", new { MovieId = MovieDetails.Id},null) </td>
+                <td>@MovieDetails.MovieType.Genre</td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+
+
