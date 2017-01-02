@@ -3,6 +3,11 @@
     ViewBag.Title = "Index";
 }
 <h2>Movies</h2>
+@using (Html.BeginForm("New", "Movie"))
+{
+<div class="col-lg-4" style="padding:5px 0px;">
+    <a class="btn btn-primary" role="button">New Movie</a>
+</div>
 <table class="container-fluid table table-bordered table-striped" >
     <thead>
         <tr>
@@ -27,3 +32,4 @@
 </table>
 
 
+}

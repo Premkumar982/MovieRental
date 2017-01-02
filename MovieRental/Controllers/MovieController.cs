@@ -40,6 +40,16 @@ namespace MovieRental.Controllers
             return View(viewModel);
         }
 
+        public ActionResult New()
+        {
+            var MovieGenre = _Context.MovieGenre.ToList();
+            MovieViewModel Movieobj = new MovieViewModel()
+            {
+                MovieGenreList = MovieGenre
+            };
+            return View("MovieForm", Movieobj);
+        }
+
         public ActionResult Edit(int id)
         {
             return Content("Id=" + id);
