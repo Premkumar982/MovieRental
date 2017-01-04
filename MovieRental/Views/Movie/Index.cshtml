@@ -3,10 +3,10 @@
     ViewBag.Title = "Index";
 }
 <h2>Movies</h2>
-@using (Html.BeginForm("New", "Movie"))
-{
+
 <div class="col-lg-4" style="padding:5px 0px;">
-    <a class="btn btn-primary" role="button">New Movie</a>
+    
+    @Html.ActionLink("New Movie","New","Movie",null,new { @class = "btn btn-primary"})
 </div>
 <table class="container-fluid table table-bordered table-striped" >
     <thead>
@@ -23,7 +23,7 @@
         @foreach (var MovieDetails in Model.Movie)
         {
             <tr>
-                <td>@Html.ActionLink(MovieDetails.MovieName, "Details", "Movie", new { MovieId = MovieDetails.Id},null) </td>
+                <td>@Html.ActionLink(MovieDetails.MovieName, "Edit", "Movie", new { Id = MovieDetails.Id},null) </td>
                 <td>@MovieDetails.MovieType.Genre</td>
                 
             </tr>
@@ -32,4 +32,3 @@
 </table>
 
 
-}

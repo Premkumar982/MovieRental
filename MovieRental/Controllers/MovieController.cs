@@ -50,9 +50,15 @@ namespace MovieRental.Controllers
             return View("MovieForm", Movieobj);
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int Id)
         {
-            return Content("Id=" + id);
+            var MovieDetails = _Context.Movies.SingleOrDefault(m => m.Id == Id);
+            var MovieDetailsVM = new MovieViewModel()
+            {
+                Movies = MovieDetails,
+                MovieGenreList = _Context.MovieGenre.ToList()
+            };
+            return View("MovieForm", MovieDetailsVM);
         }
 
         //public ActionResult Index(int? PageIndex, string sortBy)
