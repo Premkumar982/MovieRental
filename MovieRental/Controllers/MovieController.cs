@@ -61,6 +61,43 @@ namespace MovieRental.Controllers
             return View("MovieForm", MovieDetailsVM);
         }
 
+        public ActionResult SaveMovie(MovieViewModel MovieDetails)
+        {
+            if (MovieDetails.Movies.Id == 0)
+            {
+                Movie objMovie = new Movie()
+                {
+                    MovieName = MovieDetails.Movies.MovieName,
+                    MovieTypeId = MovieDetails.Movies.MovieTypeId,
+                    NumberInStock = MovieDetails.Movies.NumberInStock,
+                    ReleaseDate = MovieDetails.Movies.ReleaseDate,
+                    DateAdded = Convert.ToDateTime(DateTime.Now.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture))
+
+            };
+                _Context.Movies.Add(objMovie);
+                
+            }
+            else
+            {
+                var dbMovieDetails = _Context.Movies.SingleOrDefault(m => m.Id == MovieDetails.Movies.Id);
+                if(dbMovieDetails == null)
+                {
+                    return HttpNotFound();
+                }
+
+
+                dbMovieDetails.MovieName = MovieDetails.Movies.MovieName;
+                dbMovieDetails.MovieTypeId = MovieDetails.Movies.MovieTypeId;
+                dbMovieDetails.NumberInStock = MovieDetails.Movies.NumberInStock;
+                dbMovieDetails.ReleaseDate = MovieDetails.Movies.ReleaseDate;
+                dbMovieDetails.DateAdded = DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"));
+
+                
+            }
+            _Context.SaveChanges();
+            return RedirectToAction("Index", "Movie");
+        }
+
         //public ActionResult Index(int? PageIndex, string sortBy)
         public ActionResult Index()
         {

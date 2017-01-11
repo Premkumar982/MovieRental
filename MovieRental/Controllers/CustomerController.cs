@@ -35,6 +35,15 @@ namespace MovieRental.Controllers
         [HttpPost]
         public ActionResult SaveCustomer(CustomerViewModel NewCustomerDetails)
         {
+            if(!ModelState.IsValid)
+            {
+                var customerVM = new CustomerViewModel()
+                {
+                    Customer = NewCustomerDetails.Customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+                return View("CustomerForm", customerVM);
+            }
             if (NewCustomerDetails.Customer.Id == 0)
             {
                 Customer CustDetails = new Customer()

@@ -6886,3 +6886,13 @@ button.close {
 .panel-info .panel-title {
   color: #fff;
 }
+
+.field-validation-error
+{
+    color:red;
+}
+
+.input-validation-error
+{
+    border:1px red solid;
+}
