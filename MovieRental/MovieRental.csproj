@@ -258,9 +258,14 @@
     <Compile Include="Migrations\201612301036317_AddMovieGenreandProp1.Designer.cs">
       <DependentUpon>201612301036317_AddMovieGenreandProp1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701170741106_Notsurewhat.cs" />
+    <Compile Include="Migrations\201701170741106_Notsurewhat.Designer.cs">
+      <DependentUpon>201701170741106_Notsurewhat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerCustomValidation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -384,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612301036317_AddMovieGenreandProp1.resx">
       <DependentUpon>201612301036317_AddMovieGenreandProp1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701170741106_Notsurewhat.resx">
+      <DependentUpon>201701170741106_Notsurewhat.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

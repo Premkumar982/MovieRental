@@ -28,11 +28,13 @@ namespace MovieRental.Controllers
             var MembershipTypes = _context.MembershipTypes.ToList();
             var NewCustomerVM = new CustomerViewModel()
             {
+                Customer = new Customer(),
                 MembershipTypes = MembershipTypes
             };
             return View("CustomerForm",NewCustomerVM);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SaveCustomer(CustomerViewModel NewCustomerDetails)
         {
             if(!ModelState.IsValid)

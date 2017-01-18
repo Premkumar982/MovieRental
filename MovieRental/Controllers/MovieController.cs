@@ -60,9 +60,18 @@ namespace MovieRental.Controllers
             };
             return View("MovieForm", MovieDetailsVM);
         }
-
+        [ValidateAntiForgeryToken]
         public ActionResult SaveMovie(MovieViewModel MovieDetails)
         {
+            if(ModelState.IsValid == false)
+            {
+                var MovieVM = new MovieViewModel()
+                {
+                    Movies = MovieDetails.Movies,
+                    MovieGenreList = _Context.MovieGenre.ToList()
+                };
+                return View("MovieForm", MovieVM);
+            }
             if (MovieDetails.Movies.Id == 0)
             {
                 Movie objMovie = new Movie()

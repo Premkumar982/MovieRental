@@ -14,5 +14,8 @@ namespace MovieRental.Models
         public byte DurationinMonths { get; set; }
 
         public byte DiscountRate { get; set; }
+
+        public const int unknown = 0;
+        public const int PayasyouGo = 1;
     }
 }

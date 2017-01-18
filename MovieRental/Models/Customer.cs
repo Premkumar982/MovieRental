@@ -16,6 +16,7 @@ namespace MovieRental.Models
         public string CustomerName { get; set; }
 
         [Display(Name = "Date of Birth")]
+        [CustomerCustomValidation]
         public DateTime? DateOfBirth { get; set; } 
 
         public bool IsSubscribedtoNewsLetter { get; set; }
